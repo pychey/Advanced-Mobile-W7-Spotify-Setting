@@ -35,7 +35,9 @@ class LibraryScreen extends StatelessWidget {
                 song: songs[index],
                 isPlaying: playerState.currentSong == songs[index],
                 onTap: () {
-                  playerState.start(songs[index]);
+                  playerState.currentSong == songs[index]
+                    ? playerState.stop()
+                    : playerState.start(songs[index]);
                 },
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:advanced_flutter/W7-Spotify-Setting/ui/states/settings_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
  
@@ -17,8 +18,10 @@ class LibraryScreen extends StatelessWidget {
  
     // 3 - Watch the global player state
     PlayerState playerState = context.watch<PlayerState>();
+    AppSettingsState settingsState = context.read<AppSettingsState>();
 
     return Container(
+      color: settingsState.theme.backgroundColor,
     
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,4 +1,6 @@
+import 'package:advanced_flutter/W7-Spotify-Setting/ui/states/settings_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
  
 import '../../../model/settings/app_settings.dart';
 import '../../theme/theme.dart';
@@ -10,7 +12,10 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
  
+    AppSettingsState settingsState = context.watch<AppSettingsState>();
+
     return Container(
+      color: settingsState.theme.backgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -32,9 +37,9 @@ class SettingsScreen extends StatelessWidget {
                 .map(
                   (theme) => ThemeColorButton(
                     themeColor: theme,
-                    isSelected: false,
+                    isSelected: settingsState.theme == theme,
                     onTap: (value) {
-                      
+                      settingsState.changeTheme(value);
                     },
                   ),
                 )
